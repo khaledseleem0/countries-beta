@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {BrowserRouter as Router  , Route , Switch} from 'react-router-dom'
+import Main from './components/main' 
+import Info from './components/info'
+import Nav from './components/nav' 
+import {Body} from './styles/mainStyle';
+import { createContext,useState } from 'react'
+import { lightTheme , darkTheme} from './styles/themes';
+import "./style.css";
+export const ThemeMode  = createContext();
 function App() {
+  const [theme, setTheme] = useState('light')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <ThemeMode.Provider value={[theme, setTheme]}>
+  <Router>
+     <Body body={theme  === 'light' ? lightTheme.body : darkTheme.body}>
+     <Nav/>
+     <Switch>
+     <Route path="/home" component={Main}></Route>
+     <Route path="/countries/:country" component={Info}></Route>
+     </Switch>
+      </Body>
+   </Router>
+    </ThemeMode.Provider>
+
+ 
   );
 }
 
