@@ -14,7 +14,7 @@ export default function Card(props) {
   return (
     <CardContainer theme={theme === "light" ? lightTheme : darkTheme}>
       <Img>
-      <Link to={"countries/"+data.name}>
+      <Link to={"countries-beta/countries/"+data.name}>
       <img src={data.flag} />
       </Link>
       </Img>

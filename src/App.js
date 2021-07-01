@@ -15,8 +15,8 @@ function App() {
      <Body body={theme  === 'light' ? lightTheme.body : darkTheme.body}>
      <Nav/>
      <Switch>
-     <Route path="/home" component={Main}></Route>
-     <Route path="/countries/:country" component={Info}></Route>
+     <Route path="countries-beta/home" component={Main}></Route>
+     <Route path="countries-beta/countries/:country" component={Info}></Route>
      </Switch>
       </Body>
    </Router>
